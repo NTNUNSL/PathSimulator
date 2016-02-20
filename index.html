@@ -115,8 +115,10 @@
 
 <script>
 var canvas = document.getElementById("simulator");
-canvas.width = 900;
+
+canvas.width = parseFloat(window.getComputedStyle(canvas).width);
 canvas.height = 600;
+
 var ctx = canvas.getContext("2d");
 var frame_rate = 60;
 var is_start = false;
