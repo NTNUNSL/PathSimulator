@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled</title>
+    <title>Path Simulator</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="assets/bootstrap/fonts/font-awesome.min.css">
@@ -20,15 +20,17 @@
                 <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
+<!--
                 <ul class="nav navbar-nav links">
                     <li role="presentation"><a href="#">Overview </a></li>
                     <li role="presentation"><a href="#">Surveys </a></li>
-                    <li role="presentation"><a href="#"> Reports</a></li>
-                    <li role="presentation"><a href="#" class="custom-navbar"> Roles<span class="badge">new</span></a></li>
+                    <li role="presentation"><a href="#">Reports </a></li>
+                    <li role="presentation"><a href="#" class="custom-navbar">Roles <span class="badge">new</span></a></li>
                 </ul>
+-->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <span class="caret"></span><img src="assets/img/avatar.jpg" class="dropdown-image"></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"> <span class="caret"></span> Ming <img src="assets/img/avatar.jpg" class="dropdown-image"></a>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">
                             <li><a href="#">Settings </a></li>
                             <li><a href="#">Payments </a></li>
@@ -104,11 +106,17 @@
             </script>        
         </div>
     </div>
+    <div class="btn-group" role="group">
+        <button onclick="start();" class="btn btn-default" type="button">Start</button>
+        <button onclick="pause();" class="btn btn-default" type="button">Pause</button>
+        <button onclick="reset();" class="btn btn-default" type="button">Reset</button>
+    </div>
+
 
 <script>
 var canvas = document.getElementById("simulator");
-//canvas.width = 900;
-//canvas.height = 600;
+canvas.width = 900;
+canvas.height = 600;
 var ctx = canvas.getContext("2d");
 var frame_rate = 60;
 var is_start = false;
@@ -142,6 +150,8 @@ function init_envvar() {
       drone.head = drone.head % 360;
    }
 }
+
+/*
 function init_algorithmlist() {
    document.getElementById("algorithm").options.length = 0;
    var algorithm_list = document.getElementById("algorithm");
@@ -152,6 +162,8 @@ function init_algorithmlist() {
       algorithm_list.add(option);
    }
 }
+*/
+
 function init_rssi() {
    var grd = ctx.createRadialGradient(canvas.width/2, canvas.height/2, rssi_radius, canvas.width/2, canvas.height/2, 0);
    grd.addColorStop(1, "red");
@@ -213,7 +225,7 @@ function update_drone() {
 }
 function start() {
    if (!is_start) {
-      update_algorithm = document.getElementById("algorithm").value;
+      //update_algorithm = document.getElementById("algorithm").value;
       simulator = setInterval(update_drone, 1000/frame_rate);
       is_start = true;
    }
@@ -227,7 +239,7 @@ function reset() {
    ctx.clearRect(0, 0, canvas.width, canvas.width);
    init_rssi();
    init_envvar();
-   init_algorithmlist();
+   //init_algorithmlist();
    is_start = false;
    is_pause = false;
    document.getElementById("x").innerHTML = "";
