@@ -9,11 +9,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="assets/bootstrap/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="assets/css/Pretty-Header.css">
 </head>
 
-<body>
+<body onresize="resizeEditor();">
     <nav class="navbar navbar-default custom-header">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">PathSimulator<span>Beta </span> </a>
@@ -46,9 +45,14 @@
     <div class="row">
         <div class="col-md-6">
             <canvas id="simulator" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas> 
+            <div class="btn-group" role="group">
+                <button onclick="start();" class="btn btn-default" type="button">Start</button>
+                <button onclick="pause();" class="btn btn-default" type="button">Pause</button>
+                <button onclick="reset();" class="btn btn-default" type="button">Reset</button>
+            </div>
         </div>
         
-        <div class="col-md-6">
+        <div id="editor_container" class="col-md-6">
             <div id="editor">function algorithm() { 
     token += 1;
     token = token % 15;
@@ -98,6 +102,18 @@
             <script src="assets/js/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
             <script src="assets/js/mode-javascript.js" type="text/javascript" charset="utf-8"></script>
             <script>
+
+function resizeEditor() {
+    var container = document.getElementById("editor_container");
+    var editor = document.getElementById("editor");
+    var current_width = parseFloat(window.getComputedStyle(container).width);
+    var current_height = parseFloat(window.getComputedStyle(document.getElementById("simulator")).height);
+    editor.style.height = current_height + "px";
+    editor.style.width = (current_width-40) + "px";
+}
+                resizeEditor();
+                document.getElementById("editor").style.height = "600px";
+                
                 var editor = ace.edit("editor");
                 editor.setTheme("ace/theme/twilight");
                 editor.setFontSize(18);
@@ -106,12 +122,6 @@
             </script>        
         </div>
     </div>
-    <div class="btn-group" role="group">
-        <button onclick="start();" class="btn btn-default" type="button">Start</button>
-        <button onclick="pause();" class="btn btn-default" type="button">Pause</button>
-        <button onclick="reset();" class="btn btn-default" type="button">Reset</button>
-    </div>
-
 
 <script>
 var canvas = document.getElementById("simulator");
@@ -262,27 +272,6 @@ init_envvar();
    init_algorithmlist();
 </script>
 
-
-
-    <footer>
-        <div class="row">
-            <div class="col-md-4 col-sm-6 footer-navigation">
-                <p class="company-name">Ming © 2016 </p>
-            </div>
-            <div class="col-md-4 col-sm-6 footer-contacts">
-                <div><span class="fa fa-envelope footer-contacts-icon"></span>
-                    <p> <a href="#" target="_blank">rf37535@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="clearfix visible-sm-block"></div>
-            <div class="col-md-4 footer-about">
-                <h4>Reserved</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-                </p>
-                <div class="social-links social-icons"><a href="#"><span class="fa fa-facebook"></span></a><a href="#"><span class="fa fa-twitter"></span></a><a href="#"><span class="fa fa-linkedin"></span></a><a href="#"><span class="fa fa-github"></span></a></div>
-            </div>
-        </div>
-    </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
