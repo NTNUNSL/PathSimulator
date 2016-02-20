@@ -1,0 +1,10 @@
+#editor {
+        position: absolute;
+        width: 900px;
+        height: 600px;
+    }
+
+#simulator {
+        width: 900px;
+        height: 600px;
+}
