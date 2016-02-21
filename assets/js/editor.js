@@ -84,13 +84,6 @@ var user_cont;
 
 function updateProgram() {
     user_cont = editor.getValue();
-    //cont = new Function(text);
-    //cont(); 
 }
 
 updateProgram();
-alert(user_cont);
-eval(user_cont);
-alert(main);
-
-

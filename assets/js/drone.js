@@ -101,7 +101,7 @@ function update_drone() {
 
 function start() {
    if (!is_start) {
-      //update_algorithm = document.getElementById("algorithm").value;
+      eval(user_cont);
       simulator = setInterval(update_drone, 1000/frame_rate);
       is_start = true;
    }
