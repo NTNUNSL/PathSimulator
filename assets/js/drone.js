@@ -37,19 +37,6 @@ function init_envvar() {
    }
 }
 
-/*
-function init_algorithmlist() {
-   document.getElementById("algorithm").options.length = 0;
-   var algorithm_list = document.getElementById("algorithm");
-   for(var i = 0; i < path.algorithm.length; i += 1) {
-      var option = document.createElement("option");
-      option.text = path.algorithm[i];
-      option.value = path.algorithm[i];
-      algorithm_list.add(option);
-   }
-}
-*/
-
 function init_rssi() {
    var grd = ctx.createRadialGradient(canvas.width/2, canvas.height/2, rssi_radius, canvas.width/2, canvas.height/2, 0);
    grd.addColorStop(1, "red");
@@ -60,6 +47,7 @@ function init_rssi() {
    ctx.fill();
    ctx.closePath();
 }
+
 function update_drone() {
    if(!is_pause) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -97,7 +85,8 @@ function update_drone() {
       if (drone.cur_y >= canvas.height-boundary_space | drone.cur_y <= boundary_space) {
          drone.cur_y = Math.min(Math.max(boundary_space, drone.cur_y), canvas.height-boundary_space);
       }
-      window['RandomWalk']();
+      
+      main(); 
       document.getElementById("x").innerHTML = drone.cur_x;
       document.getElementById("y").innerHTML = drone.cur_y;
       document.getElementById("v_x").innerHTML = drone.speed_x;
@@ -109,6 +98,7 @@ function update_drone() {
       document.getElementById("acc").innerHTML = drone.acc;
    }
 }
+
 function start() {
    if (!is_start) {
       //update_algorithm = document.getElementById("algorithm").value;
@@ -116,10 +106,13 @@ function start() {
       is_start = true;
    }
 }
+
 function pause() {
    is_pause = ~is_pause;
+   eval(user_cont);
    document.getElementById("button_pause").innerHTML = (is_pause) ? "Resume" : "Pause"; 
 }
+
 function reset() {
    clearInterval(simulator);
    ctx.clearRect(0, 0, canvas.width, canvas.width);
