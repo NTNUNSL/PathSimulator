@@ -1,8 +1,5 @@
 ### High
 
-- Refine the code
-	- Algorithm
-	- Split into files
 - Documents generator deal with markdown to html
 - Show the drone information
 
