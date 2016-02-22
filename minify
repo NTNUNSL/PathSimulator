@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ls src/js | while read x; 
+do
+	echo $x
+	fish -c "compiler --js src/js/$x --js_output_file assets/js/$x"
+done
