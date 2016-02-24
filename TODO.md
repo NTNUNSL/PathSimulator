@@ -1,14 +1,14 @@
 ### High
 
-- Documents generator deal with markdown to html
-- Show the drone information
+- Documents generator needs deal with markdown to html
+- Show the drone informations
 
 ### Medium
 
 - Set up the secure login
-- Add sensors simulate
-- Allow add wifi signal or obstacle by users
-- Plotting the information
+- Add sensors simulation
+- Allow add wifi signals or obstacles by users
+- Plotting the informations
 - Debugger
 
 ### Low
