@@ -1,6 +1,6 @@
 default_algorithm = `// "init" call once the page loaded, "main" will be called every 1/60 second
 
-init = function() {
+var init = function() {
     env.token = 0;
     env.last_rssi;
     env.last_move; // 0 for left, 1 for right
@@ -8,7 +8,7 @@ init = function() {
 }
 
 
-main = function() {
+var main = function() {
     env.token += 1;
     env.token = env.token % 15;
     if (env.token === 0) {
