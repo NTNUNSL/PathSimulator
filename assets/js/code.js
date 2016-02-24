@@ -1,4 +1,4 @@
-default_algorithm = `// "init" call once the page loaded, "main" will be called every 1/60 second
+default_algorithm = `// "init" got called once the page loaded, "main" will be called every 1/60 seconds
 
 var init = function() {
     env.token = 0;
