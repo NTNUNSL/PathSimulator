@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# js
+ls src/js | while read x; 
+do
+	echo $x
+	fish -c "compiler --language_in ECMASCRIPT5 --js src/js/$x --js_output_file assets/js/$x"
+done
+
+# css
+ls src/css | while read x; 
+do
+	echo $x
+	fish -c "yui-compressor src/css/$x -o assets/css/$x"
+done
+
+# html
+ls src/html | while read x; 
+do
+	echo $x
+	fish -c "html-minifier --remove-comments --collapse-whitespace --collapse-inline-tag-whitespace --collapse-boolean-attributes --remove-tag-whitespace src/html/$x -o $x"
+done
+
+rm -rf hsperfdata_ming/
