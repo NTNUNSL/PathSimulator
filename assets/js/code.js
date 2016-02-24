@@ -11,9 +11,8 @@ var init = function() {
 
 
 var main = function() {
-
     env.token += 1;
-    env.token = envtoken % 15;
+    env.token = env.token % 15;
     if (env.token === 0) {
     
         if (drone.rssi > 0) {
